@@ -7,21 +7,9 @@ public class MatrixUtils {
 
     public static double[][] multiplyMatrices(double[][] firstMatrix, double[][] secondMatrix) {
         double[][] result = new double[firstMatrix.length][secondMatrix[0].length];
-
-        for (int row = 0; row < result.length; row++) {
-            for (int col = 0; col < result[row].length; col++) {
-                result[row][col] = multiplyMatricesCell(firstMatrix, secondMatrix, row, col);
-            }
-        }
-
-        return result;
-    }
-
-    public static double[][] roundMatrix(double[][] matrix) {
-        final double[][] result = getNewZeroMatrix(matrix.length, matrix[0].length);
-        for(int i = 0; i < matrix.length; i++) {
-            for(int j = 0; j < matrix[i].length; j++) {
-                result[i][j] = matrix[i][j] > 0 ? 1 : -1;
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result[i].length; j++) {
+                result[i][j] = multiplyMatricesCell(firstMatrix, secondMatrix, i, j);
             }
         }
         return result;
@@ -56,14 +44,6 @@ public class MatrixUtils {
         return result;
     }
 
-    public static double[][] copyMatrix(double[][] matrix) {
-        double[][] copyMatrix = getNewZeroMatrix(matrix.length, matrix[0].length);
-        for(int i = 0; i < matrix.length; i++) {
-            System.arraycopy(matrix[i], 0, copyMatrix[i], 0, matrix[i].length);
-        }
-        return copyMatrix;
-    }
-
     public static double[][] getNewZeroMatrix(int rows, int columns) {
         double[][] result = new double[rows][columns];
         for(int i = 0; i < rows; i++) {
@@ -90,19 +70,10 @@ public class MatrixUtils {
         return matrix;
     }
 
-    public static void printMatrix(double[][] matrix) {
-        for(int i = 0; i < matrix.length; i++) {
-            for(int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
-
     public static List<Integer> verticalMatrixToIntegerList(double[][] matrix) {
         List<Integer> list = new ArrayList<>();
-        for(int i = 0; i < matrix.length; i++) {
-            list.add(matrix[i][0] > 0 ? 1 : -1);
+        for (double[] doubles : matrix) {
+            list.add(doubles[0] > 0 ? 1 : -1);
         }
         return list;
     }
