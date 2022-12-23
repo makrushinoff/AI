@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class GUI extends Application {
+public class GeneticAlgorithmGUI extends Application {
 
     private static final Integer PRIMARY_SCENE_WIDTH = 1200;
     private static final Integer PRIMARY_SCENE_HEIGHT = 950;
